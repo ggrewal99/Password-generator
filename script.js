@@ -1,9 +1,9 @@
 var button = document.getElementById("generate");
 var lengthSelect = document.getElementById("length");
 var lengthDisplay = document.getElementById("lengthDisplay");
-var weakRadio = document.getElementById("weak");
-var mediumRadio = document.getElementById("medium");
-var strongRadio = document.getElementById("strong");
+// var weakRadio = document.getElementById("weak");
+// var mediumRadio = document.getElementById("medium");
+// var strongRadio = document.getElementById("strong");
 var weakRange = [];
 var mediumRange = [];
 var strongRange = [];
@@ -25,21 +25,6 @@ function init() {
 window.addEventListener("load", init);
 
 lengthSelect.addEventListener("input", function () {
-    lengthDisplay.innerHTML = lengthSelect.value;
-});
-
-weakRadio.addEventListener("input", function () {
-    lengthSelect.value = 8;
-    lengthDisplay.innerHTML = lengthSelect.value;
-});
-
-mediumRadio.addEventListener("input", function () {
-    lengthSelect.value = 12;
-    lengthDisplay.innerHTML = lengthSelect.value;
-});
-
-strongRadio.addEventListener("input", function () {
-    lengthSelect.value = 20;
     lengthDisplay.innerHTML = lengthSelect.value;
 });
 

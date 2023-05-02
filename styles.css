@@ -36,3 +36,8 @@ body {
 .result {
     width: 60%;
 }
+
+.type {
+    display: flex;
+    flex-direction: column;
+}
