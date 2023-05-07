@@ -1,27 +1,27 @@
-let button = document.getElementById("generate");
-let lengthSelect = document.getElementById("length");
-let lengthDisplay = document.getElementById("lengthDisplay");
-let lower = document.getElementById("lower");
-let upper = document.getElementById("upper");
-let numbers = document.getElementById("numbers");
-let special = document.getElementById("special");
+var lengthSelect = document.getElementById("length");
+var lengthDisplay = document.getElementById("lengthDisplay");
+var lower = document.getElementById("lower");
+var upper = document.getElementById("upper");
+var numbers = document.getElementById("numbers");
+var special = document.getElementById("special");
+var output = document.getElementById("result");
 
-let lowerRange = {
+var lowerRange = {
     checked: false,
     range: [97, 122],
 };
 
-let upperRange = {
+var upperRange = {
     checked: false,
     range: [65, 90],
 };
 
-let numbersRange = {
+var numbersRange = {
     checked: false,
     range: [48, 57],
 };
 
-let specialRange = {
+var specialRange = {
     checked: false,
     range: [
         [33, 47],
@@ -37,10 +37,10 @@ lengthSelect.addEventListener("input", function () {
 
 //RETURNS THE COUNT OF RANGES INCLUDED
 function checkRange(number, count) {
-    let rangeObjects = [lowerRange, upperRange, numbersRange];
-    let counter = count;
-    for (let i = 0; i < rangeObjects.length; i++) {
-        let rangeObject = rangeObjects[i];
+    var rangeObjects = [lowerRange, upperRange, numbersRange];
+    var counter = count;
+    for (var i = 0; i < rangeObjects.length; i++) {
+        var rangeObject = rangeObjects[i];
 
         if (
             rangeObject.checked === false &&
@@ -67,7 +67,6 @@ function checkRange(number, count) {
             counter++;
         }
     }
-
     return counter;
 }
 
@@ -82,67 +81,74 @@ function generate() {
         return;
     }
 
-    let randomChar = [];
-    let charCodes = [];
-    let index = 0;
-    let charCode = 0;
-    let rangeUsedCounter = 0;
-    let checkedBoxesCounter = 0;
+    var randomChar = [];
+    var charCodes = [];
+    var index = 0;
+    var charCode = 0;
+    var rangeUsedCounter = 0;
+    var checkedBoxesCounter = 0;
+    lowerRange.checked = false;
+    upperRange.checked = false;
+    numbersRange.checked = false;
+    specialRange.checked = false;
 
     if (lower.checked) {
-        for (let i = 97; i <= 122; i++) {
+        for (var i = 97; i <= 122; i++) {
             charCodes.push(i);
         }
     }
     if (upper.checked) {
-        for (let i = 65; i <= 90; i++) {
+        for (var i = 65; i <= 90; i++) {
             charCodes.push(i);
         }
     }
     if (numbers.checked) {
-        for (let i = 48; i <= 57; i++) {
+        for (var i = 48; i <= 57; i++) {
             charCodes.push(i);
         }
     }
     if (special.checked) {
-        for (let i = 33; i <= 47; i++) {
+        for (var i = 33; i <= 47; i++) {
             charCodes.push(i);
         }
-        for (let i = 58; i <= 64; i++) {
+        for (var i = 58; i <= 64; i++) {
             charCodes.push(i);
         }
-        for (let i = 91; i <= 96; i++) {
+        for (var i = 91; i <= 96; i++) {
             charCodes.push(i);
         }
-        for (let i = 123; i <= 126; i++) {
+        for (var i = 123; i <= 126; i++) {
             charCodes.push(i);
         }
     }
-
     do {
-        let count = 0;
+        var count = 0;
         rangeUsedCounter = 0;
         randomChar = [];
         lowerRange.checked = false;
         upperRange.checked = false;
         numbersRange.checked = false;
         specialRange.checked = false;
-        for (let i = 0; i < lengthSelect.value; i++) {
+        for (var i = 0; i < lengthSelect.value; i++) {
             index = Math.floor(Math.random() * charCodes.length);
             charCode = charCodes[index];
             rangeUsedCounter += checkRange(charCode, count);
             randomChar.push(String.fromCharCode(charCode));
         }
-
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let checkedBoxesCounter = 0;
-        for (let i = 0; i < checkboxes.length; i++) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var checkedBoxesCounter = 0;
+        for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].checked) {
                 checkedBoxesCounter++;
             }
         }
     } while (rangeUsedCounter != checkedBoxesCounter);
-    console.log(charCodes);
-    let result = randomChar.join("");
-    document.getElementById("result").value = result;
+    var result = randomChar.join("");
+    output.value = result;
+}
+
+function clip() {
+    output.select();
+    navigator.clipboard.writeText(output.value);
+    alert("Text copied!");
 }
