@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const output = document.getElementById("result");
     const copyButton = document.getElementById("copy");
     const generateButton = document.getElementById("generate");
+    const alertBox = document.querySelector(".alert-box");
+    const alertBoxClose = document.querySelector(".alert-box-close");
 
     const lowerRange = {
         checked: false,
@@ -150,9 +152,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function clip() {
         output.select();
         navigator.clipboard.writeText(output.value);
-        // alert("Text copied!");
+        alertBox.style.display = "block";
+        setTimeout(function () {
+            alertBox.style.display = "none";
+        }, 5000);
     }
 
     copyButton.addEventListener("click", clip);
     generateButton.addEventListener("click", generate);
+    alertBoxClose.addEventListener("click", () => {
+        alertBox.style.display = "none";
+    })
 });
