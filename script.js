@@ -137,7 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 rangeUsedCounter += checkRange(charCode, count);
                 randomChar.push(String.fromCharCode(charCode));
             }
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkboxes = document.querySelectorAll(
+                'input[type="checkbox"]'
+            );
             checkedBoxesCounter = 0;
             for (let i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
@@ -150,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function clip() {
-        output.select();
         navigator.clipboard.writeText(output.value);
         alertBox.style.display = "block";
         setTimeout(function () {
@@ -162,5 +163,5 @@ document.addEventListener("DOMContentLoaded", function () {
     generateButton.addEventListener("click", generate);
     alertBoxClose.addEventListener("click", () => {
         alertBox.style.display = "none";
-    })
+    });
 });
