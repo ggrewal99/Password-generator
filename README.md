@@ -1,6 +1,6 @@
 # Password Generator
 
-A simple password generator with options for length, character types, and the ability to copy generated passwords to the clipboard.
+A password generator with options for length, character types, and the ability to copy generated passwords to the clipboard.
 
 ## Table of Contents
 
