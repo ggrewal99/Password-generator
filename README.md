@@ -31,3 +31,7 @@ This password generator is a web-based tool that allows users to create strong a
 
 The password generator uses JavaScript to dynamically create random passwords based on the user's selected options. It ensures that the generated password includes the selected character types and matches the specified length. The generated password is then displayed to the user and can be easily copied to the clipboard.
 
+## Design Source
+
+The design for this project was inspired by a challenge from [Frontend Mentor](https://www.frontendmentor.io/).
+
